@@ -1,0 +1,20 @@
+mkdir monitor-fastapi
+cd monitor-fastapi
+mkdir app
+mkdir app\routers
+
+ni app\__init__.py -Force
+ni app\main.py -Force
+ni app\database.py -Force
+ni app\models.py -Force
+ni app\schemas.py -Force
+ni app\auth.py -Force
+ni app\crud.py -Force
+ni app\routers\__init__.py -Force
+ni app\routers\users.py -Force
+ni app\routers\stocks.py -Force
+ni requirements.txt -Force
+ni Dockerfile -Force
+ni docker-compose.yml -Force
+ni .env.example -Force
+ni README.md -Force

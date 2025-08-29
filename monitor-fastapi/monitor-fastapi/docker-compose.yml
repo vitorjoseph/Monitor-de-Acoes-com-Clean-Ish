@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-monitor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-monitorpass}
+      POSTGRES_DB: ${POSTGRES_DB:-monitordb}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - monitor-net
+
+  web:
+    build: .
+    restart: on-failure
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://${POSTGRES_USER:-monitor}:${POSTGRES_PASSWORD:-monitorpass}@db:5432/${POSTGRES_DB:-monitordb}}
+      SECRET_KEY: ${SECRET_KEY:-change_this_secret}
+      INIT_DB: "true"
+    ports:
+      - "8000:8000"
+    networks:
+      - monitor-net
+
+volumes:
+  pgdata:
+
+networks:
+  monitor-net:
