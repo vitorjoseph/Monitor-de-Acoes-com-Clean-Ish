@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   db:
     image: postgres:15
@@ -7,10 +6,13 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-monitor}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-monitorpass}
       POSTGRES_DB: ${POSTGRES_DB:-monitordb}
+    ports:
+      - "5432:5432"      # <--- adicionado
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
       - monitor-net
+
 
   web:
     build: .
