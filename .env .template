@@ -1,0 +1,27 @@
+# ===================
+# Banco de Dados
+# ===================
+POSTGRES_USER=monitor
+POSTGRES_PASSWORD=monitorpass
+POSTGRES_DB=monitordb
+
+# URL de conexão (Docker)
+DATABASE_URL=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+
+# Se rodar fora do Docker, use uma das opções abaixo:
+# DATABASE_URL=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}
+# DATABASE_URL=sqlite:///./meudb.db   # alternativa simples para testes locais
+
+# ===================
+# Segurança / JWT
+# ===================
+# Gere uma chave segura com: openssl rand -hex 32
+SECRET_KEY=coloque_uma_chave_secreta_aleatoria
+SESSION_SECRET=coloque_outra_chave_unica_para_sessoes
+
+# ===================
+# Google OAuth2
+# ===================
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/callback

@@ -1,0 +1,78 @@
+# Arquivos de configuração sensíveis
+.env
+*.env
+.env.*
+!.env.example
+
+# Arquivos e diretórios temporários do Python
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*$py.class
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Arquivos de log
+*.log
+logs/
+
+# Arquivos de ambiente virtual
+venv/
+env/
+.venv/
+ENV/
+venv.bak
+env.bak
+
+# Arquivos do Docker
+*.dockerignore
+docker-compose.override.yml
+docker-compose.debug.yml
+
+# Arquivos de cache e temporários
+*.cache
+*.tmp
+temp/
+tmp/
+
+# Arquivos de IDEs e editores
+.vscode/
+*.vscode
+.idea/
+*.idea
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de dependências instaladas
+node_modules/
+static/node_modules/
+
+# Arquivos de build de frontend
+static/css/*.min.css
+static/js/*.min.js
+static/css/*.map
+static/js/*.map
+static/build/
+
+# Outros arquivos sensíveis ou desnecessários
+*.secret
+*.key
+*.pem
+coverage/
+.coverage
+*.coverage.*
+*.lock
+db.sqlite3
+*.db
+
+# Ignorar arquivos de backup
+*~
+*.bak

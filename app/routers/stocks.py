@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app import schemas, crud, auth
+import schemas, crud, auth
 from typing import List
 
 router = APIRouter()

@@ -7,26 +7,33 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-monitorpass}
       POSTGRES_DB: ${POSTGRES_DB:-monitordb}
     ports:
-      - "5432:5432"      # <--- adicionado
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
       - monitor-net
-
 
   web:
     build: .
     restart: on-failure
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://${POSTGRES_USER:-monitor}:${POSTGRES_PASSWORD:-monitorpass}@db:5432/${POSTGRES_DB:-monitordb}}
-      SECRET_KEY: ${SECRET_KEY:-change_this_secret}
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_KEY: ${SECRET_KEY}
       INIT_DB: "true"
+      SESSION_SECRET: ${SESSION_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
     ports:
       - "8000:8000"
     networks:
       - monitor-net
+    volumes:
+      - ./app/:/app  # <-- mapeia a pasta local ./app para /app no container
+
 
 volumes:
   pgdata:
